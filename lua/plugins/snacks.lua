@@ -11,6 +11,7 @@ return {
   'folke/snacks.nvim',
   ---@type snacks.Config
   opts = {
+    explorer = { enabled = true },
     terminal = {
       -- your terminal configuration comes here
       -- or leave it empty to use the default settings
@@ -29,6 +30,13 @@ return {
         Snacks.terminal()
       end,
       desc = 'Toggle Terminal',
+    },
+    {
+      '<leader>E',
+      function()
+        Snacks.explorer()
+      end,
+      desc = 'File Explorer',
     },
   },
 }
