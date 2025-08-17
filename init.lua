@@ -101,7 +101,7 @@ vim.keymap.set({ 'n', 'i' }, '<C-q>', '<C-w>c')
 
 -- Load Netrw
 vim.g.netrw_winsize = 20
-vim.g.netrw_keepdir = 0
+-- vim.g.netrw_keepdir = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
@@ -388,7 +388,7 @@ require('lazy').setup({
       { 'mason-org/mason.nvim', opts = {} },
     },
     opts = {
-      ensure_installed = { 'bash-language-server', 'gopls', 'jdtls', 'shfmt', 'sql-formatter', 'stylua' },
+      ensure_installed = { 'bash-language-server', 'gopls', 'java-debug-adapter', 'jdtls', 'shfmt', 'sql-formatter', 'stylua' },
     },
   },
   -- Useful status updates for LSP.
@@ -397,24 +397,31 @@ require('lazy').setup({
     'mfussenegger/nvim-jdtls',
     ft = 'java',
     config = function()
+      local workspaces_dir = vim.fn.expand '$HOME/Projects/.workspaces'
+      local project_dir = nil
       local function start_or_attach()
-        local root_dir = vim.fs.root(0, { 'gradlew', 'mvnw', 'pom.xml', 'settings.gradle' })
-        local project_name = vim.fs.basename(root_dir)
-        local workspace_dir = vim.fn.expand(vim.fs.joinpath('$HOME/Projects/.workspaces', project_name))
+        project_dir = vim.fs.root(0, { 'gradlew', 'mvnw', 'pom.xml', 'settings.gradle' }) or project_dir
+        -- print(string.format('WORKSPACE: %s', workspaces_dir))
+        -- print(string.format('PROJECT: %s', project_dir))
+
+        local project_name = vim.fs.basename(project_dir)
+        local workspace_dir = vim.fs.joinpath(workspaces_dir, project_name)
         require('jdtls').start_or_attach {
-          root_dir = root_dir,
+          root_dir = project_dir,
           cmd = {
             vim.fn.exepath 'jdtls',
-            ('--jvm-arg=-javaagent:%s'):format(vim.fn.expand '$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar'),
+            ('--jvm-arg=-javaagent:%s'):format(vim.fn.expand '$MASON/packages/jdtls/lombok.jar'),
             '--jvm-arg=-Xms128m',
-            '--jvm-arg=-Xmx256m',
+            '--jvm-arg=-Xmx1g',
             '-data',
             workspace_dir,
             '-configuraton',
-            vim.fn.expand '$HOME/.local/share/nvim/mason/packages/jdtls/config_mac_arm',
+            vim.fn.expand '$MASON/packages/jdtls/config_mac_arm',
           },
           init_options = {
-            bundles = {},
+            bundles = {
+              vim.fn.expand '$MASON/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar',
+            },
           },
           capabilities = require('blink.cmp').get_lsp_capabilities(),
           settings = {
@@ -695,7 +702,7 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
@@ -769,6 +776,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('grn', vim.lsp.buf.rename, '[R]ename')
     map('grt', vim.lsp.buf.type_definition, '[T]ype Definition')
     map('grm', vim.lsp.buf.implementation, 'I[m]plementation')
+    map('<C-t>', vim.lsp.buf.implementation, 'I[m]plementation')
     map('<C-g>', vim.lsp.buf.references, '[R]eferences')
     map('grr', vim.lsp.buf.references, '[R]eferences')
     map('grD', vim.lsp.buf.declaration, '[D]eclaration')
