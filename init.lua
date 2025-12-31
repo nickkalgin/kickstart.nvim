@@ -124,10 +124,10 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<leader>c', '<cmd>bdel<CR>', { desc = '[C]lose the current buffer' })
 
 -- TIP: Disable arrow keys in normal mode
-vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!"<CR>')
-vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!"<CR>')
-vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!"<CR>')
-vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!"<CR>')
+-- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!"<CR>')
+-- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!"<CR>')
+-- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!"<CR>')
+-- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!"<CR>')
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
@@ -740,7 +740,7 @@ require('lazy').setup({
   },
 })
 
-vim.lsp.enable { 'bash_ls', 'go_ls', 'lua_ls' }
+vim.lsp.enable { 'bash_ls', 'go_ls', 'kotlin_ls', 'lua_ls' }
 
 -- Diagnostic Config
 -- See :help vim.diagnostic.Opts
