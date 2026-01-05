@@ -416,7 +416,7 @@ require('lazy').setup({
             '-data',
             workspace_dir,
             '-configuraton',
-            vim.fn.expand '$MASON/packages/jdtls/config_mac_arm',
+            vim.fn.expand '$MASON/packages/jdtls/config_linux',
           },
           init_options = {
             bundles = {
@@ -664,7 +664,6 @@ require('lazy').setup({
         'helm',
         'html',
         'java',
-        'javadoc',
         'lua',
         'luadoc',
         'markdown',
