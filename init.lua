@@ -99,14 +99,9 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Quit active window
 vim.keymap.set({ 'n', 'i' }, '<C-q>', '<C-w>c')
 
--- Load Netrw
-vim.g.netrw_winsize = 20
--- vim.g.netrw_keepdir = 0
-vim.g.netrw_localcopydircmd = 'cp -r'
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
-vim.keymap.set('n', '<A-1>', ':Lexplore %:p:h<CR>')
-vim.keymap.set('n', '<leader>te', ':Lexplore<CR>', { desc = '[T]oggle N[e]trw' })
+-- Disable Netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -604,9 +599,6 @@ require('lazy').setup({
       vim.cmd.colorscheme 'sonokai'
     end,
   },
-
-  -- Icons for Netrw
-  { 'prichrd/netrw.nvim', opts = {} },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
