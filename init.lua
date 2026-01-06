@@ -120,7 +120,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- vim.keymap.set({ 'n', 'i' }, '<F2>', '<S-k>', { desc = 'View documentation' })
 vim.keymap.set('n', '<leader>c', '<cmd>bdel<CR>', { desc = '[C]lose the current buffer' })
 
 -- TIP: Disable arrow keys in normal mode
@@ -781,6 +780,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('grr', vim.lsp.buf.references, '[R]eferences')
     map('grD', vim.lsp.buf.declaration, '[D]eclaration')
     map('grd', vim.lsp.buf.definition, '[D]efinition')
+    map('<F2>', vim.lsp.buf.hover, 'Documentation Hover')
     map('<F3>', vim.lsp.buf.definition, '[D]efinition')
     map('gri', vim.lsp.buf.incoming_calls, '[I]ncoming calls')
     map('gro', vim.lsp.buf.outgoing_calls, '[O]utgoing calls')
