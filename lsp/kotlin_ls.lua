@@ -9,4 +9,5 @@ return {
     'build.gradle.kts', -- Gradle
     'workspace.json', -- Used to integrate your own build system
   },
+  capabilities = require('blink.cmp').get_lsp_capabilities(),
 }

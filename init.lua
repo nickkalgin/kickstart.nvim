@@ -383,7 +383,7 @@ require('lazy').setup({
       { 'mason-org/mason.nvim', opts = {} },
     },
     opts = {
-      ensure_installed = { 'bash-language-server', 'gopls', 'java-debug-adapter', 'jdtls', 'shfmt', 'sql-formatter', 'stylua' },
+      ensure_installed = { 'bash-language-server', 'gopls', 'java-debug-adapter', 'jdtls', 'kotlin-lsp', 'shfmt', 'sql-formatter', 'stylua' },
     },
   },
   -- Useful status updates for LSP.
@@ -677,6 +677,7 @@ require('lazy').setup({
         'helm',
         'html',
         'java',
+        'kotlin',
         'lua',
         'luadoc',
         'markdown',
@@ -756,7 +757,7 @@ require('lazy').setup({
 
 vim.lsp.enable { 'bash_ls', 'go_ls', 'kotlin_ls', 'lua_ls' }
 -- vim.lsp.set_log_level 'DEBUG'
--- vim.lsp.log.set_format_func(vim.inspect)
+vim.lsp.log.set_format_func(vim.inspect)
 
 -- Diagnostic Config
 -- See :help vim.diagnostic.Opts
