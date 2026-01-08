@@ -99,6 +99,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Quit active window
 vim.keymap.set({ 'n', 'i' }, '<C-q>', '<C-w>c')
 
+vim.keymap.set('n', '<leader>c', '<cmd>bdel<CR>', { desc = '[C]lose the current buffer' })
+
 -- Disable Netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -115,9 +117,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, { desc = 'Open diagno
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set('n', '<leader>c', '<cmd>bdel<CR>', { desc = '[C]lose the current buffer' })
-vim.keymap.set('n', '<S-Esc>', '<cmd>bdel<CR>', { desc = '[C]lose the current buffer' })
-
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!"<CR>')
@@ -126,8 +125,16 @@ vim.keymap.set('n', '<S-Esc>', '<cmd>bdel<CR>', { desc = '[C]lose the current bu
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
--- vim.keymap.set('n', '<C-f>', '<C-f>zz')
--- vim.keymap.set('n', '<C-b>', '<C-b>zz')
+
+-- Scroll lines up and down with arrows
+vim.keymap.set('n', '<C-Up>', '<C-y>')
+vim.keymap.set('n', '<C-Down>', '<C-e>')
+vim.keymap.set('i', '<C-Up>', '<C-o><C-y>')
+vim.keymap.set('i', '<C-Down>', '<C-o><C-e>')
+
+-- Move between last :jumps backward and forward
+vim.keymap.set('n', '<M-Left>', '<C-o>')
+vim.keymap.set('n', '<M-Right>', '<C-i>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
