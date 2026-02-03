@@ -6,6 +6,8 @@ vim.g.maplocalleader = ' '
 vim.opt.langmap =
   'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
 
+vim.opt.fileencodings = 'ucs-bom,utf-8,cp1251,cp866,latin1'
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -701,6 +703,7 @@ require('lazy').setup({
         'kotlin',
         'lua',
         'luadoc',
+        'make',
         'markdown',
         'markdown_inline',
         'query',
@@ -728,6 +731,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.neo-test',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
