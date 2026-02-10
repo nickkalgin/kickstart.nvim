@@ -100,7 +100,6 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Quit active window
 vim.keymap.set({ 'n', 'i' }, '<C-q>', '<C-w>c')
-
 vim.keymap.set('n', '<leader>c', '<cmd>bdel<CR>', { desc = '[C]lose the current buffer' })
 
 -- Disable Netrw
@@ -117,7 +116,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, { desc = 'Open diagno
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+-- vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!"<CR>')
@@ -637,7 +636,6 @@ require('lazy').setup({
       vim.cmd.colorscheme 'sonokai'
     end,
   },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
   {

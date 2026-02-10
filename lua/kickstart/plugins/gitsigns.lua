@@ -4,6 +4,25 @@
 
 return {
   {
+    'kdheepak/lazygit.nvim',
+    lazy = true,
+    cmd = {
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
+    },
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { '<leader>gl', '<cmd>LazyGit<cr>', desc = 'LazyGit Repo History' },
+      { '<leader>gf', '<cmd>LazyGitFilterCurrentFile<cr>', desc = 'LazyGit File History' },
+    },
+    config = function()
+      vim.g.lazygit_floating_window_scaling_factor = 1
+    end,
+  },
+  {
     'lewis6991/gitsigns.nvim',
     opts = {
       on_attach = function(bufnr)
