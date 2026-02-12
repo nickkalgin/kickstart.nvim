@@ -107,8 +107,10 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Diagnostic keymaps
+vim.keymap.set('n', '<leader>q', function()
+  require('quicker').toggle()
+end, { desc = 'Open [Q]uickfix list' })
 vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'Open diagnostic [L]ocal list' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -457,11 +459,17 @@ require('lazy').setup({
       start_or_attach()
     end,
   },
-  -- Preview for quickfix.
   {
+    -- Preview for quickfix.
     'stevearc/quicker.nvim',
     ft = 'qf',
-    opts = {},
+    ---@module "quicker"
+    ---@type quicker.SetupOptions
+    opts = {
+      opts = {
+        winfixheight = false,
+      },
+    },
     keys = {
       {
         '>',
