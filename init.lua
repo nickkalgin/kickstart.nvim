@@ -318,6 +318,10 @@ require('lazy').setup({
             '.idea/',
             '%.class',
           },
+          layout_config = {
+            width = 0.99,
+            height = 0.98,
+          },
           -- mappings = {
           --   i = { ['<c-enter>'] = 'to_fuzzy_refine' },
           -- },
