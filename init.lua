@@ -412,6 +412,7 @@ require('lazy').setup({
         'java-debug-adapter',
         'jdtls',
         'kotlin-lsp',
+        'prettier',
         'shfmt',
         'sql-formatter',
         'stylua',
@@ -528,15 +529,19 @@ require('lazy').setup({
           return nil
         else
           return {
-            timeout_ms = 500,
+            timeout_ms = 2000,
             lsp_format = 'fallback',
           }
         end
       end,
       formatters_by_ft = {
+        css = { 'prettier' },
+        html = { 'prettier' },
+        javascript = { 'prettier' },
         lua = { 'stylua' },
         sh = { 'shfmt' },
         sql = { 'sql_formatter' },
+        typescript = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
