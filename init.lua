@@ -185,7 +185,11 @@ rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+  {
+    -- Detect tabstop and shiftwidth automatically
+    'NMAC427/guess-indent.nvim',
+    opts = {},
+  },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
@@ -709,12 +713,14 @@ require('lazy').setup({
       local filetypes = {
         'bash',
         'c',
+        'css',
         'diff',
         'go',
         'gotmpl',
         'helm',
         'html',
         'java',
+        'javascript',
         'kotlin',
         'lua',
         'luadoc',
