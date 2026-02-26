@@ -420,6 +420,7 @@ require('lazy').setup({
         'shfmt',
         'sql-formatter',
         'stylua',
+        'terraform-ls',
         'typescript-language-server',
       },
     },
@@ -730,6 +731,7 @@ require('lazy').setup({
         'markdown_inline',
         'query',
         'sql',
+        'terraform',
         'vim',
         'vimdoc',
         'xml',
@@ -792,7 +794,7 @@ require('lazy').setup({
   },
 })
 
-vim.lsp.enable { 'bash_ls', 'css_ls', 'go_ls', 'html_ls', 'kotlin_ls', 'lua_ls', 'ts_ls' }
+vim.lsp.enable { 'bash_ls', 'css_ls', 'go_ls', 'html_ls', 'kotlin_ls', 'lua_ls', 'terraform_ls', 'ts_ls' }
 -- vim.lsp.set_log_level 'DEBUG'
 vim.lsp.log.set_format_func(vim.inspect)
 
