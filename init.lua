@@ -542,6 +542,7 @@ require('lazy').setup({
         css = { 'prettier' },
         html = { 'prettier' },
         javascript = { 'prettier' },
+        json = { 'prettier' },
         lua = { 'stylua' },
         sh = { 'shfmt' },
         sql = { 'sql_formatter' },
