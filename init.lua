@@ -285,11 +285,19 @@ require('lazy').setup({
     },
     keys = {
       {
-        '<leader>ts',
+        '<leader>tc',
+        function()
+          require('sidekick.cli').toggle { name = 'codex', focus = true }
+        end,
+        desc = '[T]oggle Sidekick for [C]odex',
+        mode = { 'n', 't', 'i', 'x' },
+      },
+      {
+        '<leader>tj',
         function()
           require('sidekick.cli').toggle { name = 'junie', focus = true }
         end,
-        desc = '[T]oggle [S]idekick',
+        desc = '[T]oggle Sidekick for [J]unie',
         mode = { 'n', 't', 'i', 'x' },
       },
     },
