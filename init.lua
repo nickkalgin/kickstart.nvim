@@ -257,6 +257,43 @@ require('lazy').setup({
       },
     },
   },
+  {
+    'folke/sidekick.nvim',
+    opts = {
+      cli = {
+        mux = {
+          backend = 'tmux',
+          enabled = true,
+        },
+        tools = {
+          junie = {
+            cmd = { 'junie' },
+            keys = {
+              submit = {
+                '<leader>ss',
+                function(t)
+                  t:send '\n'
+                end,
+              },
+            },
+          },
+        },
+      },
+      nes = {
+        enabled = false,
+      },
+    },
+    keys = {
+      {
+        '<leader>ts',
+        function()
+          require('sidekick.cli').toggle { name = 'junie', focus = true }
+        end,
+        desc = '[T]oggle [S]idekick',
+        mode = { 'n', 't', 'i', 'x' },
+      },
+    },
+  },
 
   -- NOTE: Plugins can specify dependencies.
   --
