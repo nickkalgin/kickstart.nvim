@@ -85,7 +85,7 @@ vim.o.cursorline = true
 vim.o.winborder = 'none'
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+vim.o.scrolloff = 1
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -545,6 +545,7 @@ require('lazy').setup({
         javascript = { 'prettier' },
         json = { 'prettier' },
         lua = { 'stylua' },
+        markdown = { 'prettier' },
         sh = { 'shfmt' },
         sql = { 'sql_formatter' },
         typescript = { 'prettier' },
@@ -735,6 +736,7 @@ require('lazy').setup({
         'vim',
         'vimdoc',
         'xml',
+        'yaml',
       }
       require('nvim-treesitter').install(filetypes)
       vim.api.nvim_create_autocmd('FileType', {
@@ -758,7 +760,7 @@ require('lazy').setup({
   require 'kickstart.plugins.neo-test',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
