@@ -156,6 +156,12 @@ vim.keymap.set({ 'n', 't' }, '<C-k>', function()
   vim.cmd.wincmd 'k'
 end, { desc = 'Move focus to the upper window' })
 
+-- Don't copy on visual paste
+vim.keymap.set('v', 'p', '"_dP')
+-- Paste the latest yank even if smth was deleted after yanking
+vim.keymap.set('n', '<leader>p', '"0p')
+vim.keymap.set('n', '<leader>P', '"0P')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
