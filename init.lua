@@ -786,6 +786,8 @@ require('lazy').setup({
         'query',
         'sql',
         'terraform',
+        'tsx',
+        'typescript',
         'vim',
         'vimdoc',
         'xml',
