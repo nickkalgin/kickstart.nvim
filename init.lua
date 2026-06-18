@@ -418,6 +418,8 @@ require('lazy').setup({
     opts = {
       ensure_installed = {
         'bash-language-server',
+        'clangd',
+        'codelldb',
         'css-lsp',
         'gopls',
         'html-lsp',
@@ -806,7 +808,7 @@ require('lazy').setup({
   },
 })
 
-vim.lsp.enable { 'bash_ls', 'css_ls', 'go_ls', 'html_ls', 'kotlin_ls', 'lua_ls', 'terraform_ls', 'ts_ls' }
+vim.lsp.enable { 'bash_ls', 'c_ls', 'css_ls', 'go_ls', 'html_ls', 'kotlin_ls', 'lua_ls', 'terraform_ls', 'ts_ls' }
 -- vim.lsp.set_log_level 'DEBUG'
 vim.lsp.log.set_format_func(vim.inspect)
 
