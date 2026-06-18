@@ -432,6 +432,7 @@ require('lazy').setup({
         'stylua',
         'terraform-ls',
         'typescript-language-server',
+        'zls',
       },
     },
   },
@@ -749,6 +750,7 @@ require('lazy').setup({
         'vimdoc',
         'xml',
         'yaml',
+        'zig',
       }
       require('nvim-treesitter').install(filetypes)
       vim.api.nvim_create_autocmd('FileType', {
@@ -808,7 +810,7 @@ require('lazy').setup({
   },
 })
 
-vim.lsp.enable { 'bash_ls', 'c_ls', 'css_ls', 'go_ls', 'html_ls', 'kotlin_ls', 'lua_ls', 'terraform_ls', 'ts_ls' }
+vim.lsp.enable { 'bash_ls', 'c_ls', 'css_ls', 'go_ls', 'html_ls', 'kotlin_ls', 'lua_ls', 'terraform_ls', 'ts_ls', 'zig_ls' }
 -- vim.lsp.set_log_level 'DEBUG'
 vim.lsp.log.set_format_func(vim.inspect)
 

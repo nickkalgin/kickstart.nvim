@@ -1,8 +1,6 @@
 -- debug.lua
 return {
-  -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
-  -- NOTE: And you can specify dependencies as well
   dependencies = {
     'rcarriga/nvim-dap-ui',
     -- Required dependency for nvim-dap-ui
@@ -101,5 +99,28 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
+
+    -- configure codelldb adapter
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = '${port}',
+      executable = {
+        command = 'codelldb',
+        args = { '--port', '${port}' },
+      },
+    }
+
+    -- setup a debugger config for zig projects
+    dap.configurations.zig = {
+      {
+        name = 'Launch',
+        type = 'codelldb',
+        request = 'launch',
+        program = '${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}',
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+      },
+    }
   end,
 }
